@@ -21,7 +21,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           }
         `}
       />
-      <Header text="Emotion Component + Prop" emoji="🧁" />
+      <Header text="Emotion Component + Prop" emojis={['☕️', '🧁']} />
       <Component {...pageProps} />
       <Footer />
     </>

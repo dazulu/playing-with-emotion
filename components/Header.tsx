@@ -2,14 +2,16 @@ import { useState } from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 
-export type Emojis = '☕️' | '🧁'
+type AcceptedEmojis = '☕️' | '🧁'
 
 type HeaderProps = {
-  emoji: Emojis
   text: string
+  emojis: AcceptedEmojis[]
 }
 
-type TitleProps = Pick<HeaderProps, 'emoji'>
+type TitleProps = {
+  emoji: AcceptedEmojis
+}
 
 const Title = styled.h1`
   color: #cc6f78;
@@ -26,7 +28,7 @@ const ToggleButton = styled.button`
   align-self: center;
 `
 
-const Header = ({ text }: HeaderProps) => {
+const Header = ({ text, emojis }: HeaderProps) => {
   const [toggle, setToggle] = useState<boolean>(false)
 
   return (
@@ -38,7 +40,7 @@ const Header = ({ text }: HeaderProps) => {
           align-items: center;
         `}
       >
-        <Title emoji={toggle ? '☕️' : '🧁'}>{text}</Title>
+        <Title emoji={toggle ? emojis[0] : emojis[1]}>{text}</Title>
         <ToggleButton onClick={() => setToggle(!toggle)}>
           Toggle Flavour Prop
         </ToggleButton>
