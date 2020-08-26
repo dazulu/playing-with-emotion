@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const Header = () => {
+const Header = (): JSX.Element => {
   return (
     <>
       <Head>
