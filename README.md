@@ -6,8 +6,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - TypeScript ✔️
 - ESLint ✔️
 - Prettier ✔️
-- Jest/Enzyme 🟡
-- Emotion 🟡
+- Emotion ✔️
+- Jest/Enzyme or so 🟡
 
 ## Getting Started
 
