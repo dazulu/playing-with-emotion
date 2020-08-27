@@ -1,13 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and further enhanced.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## App Skeleton
+Just messing around with [`Emotion`](https://emotion.sh/docs/introduction) and what it can do.
 
 - Next.js ✔️
 - TypeScript ✔️
 - ESLint ✔️
 - Prettier ✔️
 - Emotion ✔️
-- Jest/Enzyme or so 🟡
 
 ## Getting Started
 
