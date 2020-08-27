@@ -1,146 +1,81 @@
-import React from 'react'
+import { jsx, css } from '@emotion/core'
 
-const Testimonials = () => {
+export interface Testimonial {
+  name: string
+  quote: string
+  image: string
+  type?: 'twitch' | 'youtube'
+}
+
+export interface Testimonials {
+  testimonials: Testimonial[]
+}
+
+const Testimonials: React.FC<Testimonials> = ({ testimonials }) => {
   return (
     <>
-      <div className="background">
-        <div className="wrapper">
-          <h3 className="title">What people are saying</h3>
-
-          <div className="testimonials">
-            <div className="testimonial">
-              <div className="person">
-                <img
-                  src="/testimonials/appletapple.jpg"
-                  alt="appletapple"
-                  className="avatar"
-                />
-                <div>
-                  <p className="name">appletapple</p>
-                  <span className="tag tag--twitch">Twitch Streamer</span>
-                </div>
+      <div css={wrapper}>
+        {testimonials.map((data: Testimonial, index: number) => (
+          <div css={card} key={`t${index}`}>
+            <div css={person}>
+              <img css={avatar} src={data.image} alt={data.name} />
+              <div>
+                <p css={name}>{data.name}</p>
+                <span css={tag}>Twitch Streamer</span>
               </div>
-              <q className="quote">
-                Lorem ipsum delor sit amet is mise an madra ag taffan go leor
-                anois go ciunn
-              </q>
             </div>
-
-            <div className="testimonial">
-              <div className="person">
-                <img
-                  src="/testimonials/jimothyz.jpg"
-                  alt="jimothyz"
-                  className="avatar"
-                />
-                <div>
-                  <p className="name">jimothyz</p>
-                  <span className="tag tag--twitch">Twitch Streamer</span>
-                </div>
-              </div>
-              <q className="quote">
-                Lorem ipsum delor sit amet is mise an madra ag taffan go leor
-                anois go ciunn
-              </q>
-            </div>
-
-            <div className="testimonial">
-              <div className="person">
-                <img
-                  src="/testimonials/jimothyz.jpg"
-                  alt="shayk47"
-                  className="avatar"
-                />
-                <div>
-                  <p className="name">jimothyz</p>
-                  <span className="tag tag--twitch">Twitch Streamer</span>
-                </div>
-              </div>
-              <q className="quote">
-                Lorem ipsum delor sit amet is mise an madra ag taffan go leor
-                anois go ciunn
-              </q>
-            </div>
+            <q>{data.quote}</q>
           </div>
-        </div>
+        ))}
       </div>
-
-      <style jsx>{`
-        .background {
-          background-color: #fcfcfc;
-        }
-
-        .title {
-          text-align: center;
-          font-weight: 800;
-        }
-
-        .wrapper {
-          padding-top: 80px;
-          padding-bottom: 80px;
-        }
-
-        .testimonials {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-
-        .testimonial {
-          background: #fff;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03),
-            0 2px 4px rgba(0, 0, 0, 0.03), 0 4px 8px rgba(0, 0, 0, 0.03),
-            0 8px 16px rgba(0, 0, 0, 0.03), 0 16px 32px rgba(0, 0, 0, 0.03),
-            0 32px 64px rgba(0, 0, 0, 0.05);
-          border-top-left-radius: 20px;
-          border-bottom-right-radius: 20px;
-          padding: 30px;
-          max-width: 300px;
-          width: 100%;
-        }
-
-        .testimonial {
-          margin: 30px 3vw;
-        }
-
-        .person {
-          display: flex;
-        }
-
-        .avatar {
-          background: grey;
-          border-top-right-radius: 18px;
-          border-bottom-left-radius: 18px;
-          border-radius: 20px;
-          width: 70px;
-          height: 70px;
-          margin-right: 20px;
-        }
-
-        .name {
-          font-weight: 700;
-          font-size: 18px;
-        }
-
-        .tag {
-          font-size: 13px;
-          border-radius: 15px;
-          padding: 3px 8px;
-        }
-
-        .tag--twitch {
-          background: #ebdbff;
-          color: #7f43ce;
-        }
-
-        .quote {
-          display: block;
-          padding-top: 15px;
-        }
-      `}</style>
     </>
   )
 }
+
+const wrapper = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+`
+
+const card = css`
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.03),
+    0 4px 8px rgba(0, 0, 0, 0.03), 0 8px 16px rgba(0, 0, 0, 0.03),
+    0 16px 32px rgba(0, 0, 0, 0.03), 0 32px 64px rgba(0, 0, 0, 0.05);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 30px;
+  margin: 30px 3vw;
+  max-width: 300px;
+  width: 100%;
+`
+const person = css`
+  display: flex;
+  margin-bottom: 15px;
+`
+const avatar = css`
+  background: grey;
+  border-top-right-radius: 18px;
+  border-bottom-left-radius: 18px;
+  border-radius: 20px;
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+`
+const name = css`
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 8px;
+`
+const tag = css`
+  font-size: 13px;
+  border-radius: 15px;
+  padding: 3px 8px;
+  background: #ebdbff;
+  color: #7f43ce;
+`
 
 export default Testimonials

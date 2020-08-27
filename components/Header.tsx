@@ -1,35 +1,33 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 
-type AcceptedEmojis = '☕️' | '🧁'
+type Emoji = '☕️' | '🧁'
 
 type HeaderProps = {
   text: string
-  emojis: AcceptedEmojis[]
+  emojis: Emoji[]
 }
 
 type TitleProps = {
-  emoji: AcceptedEmojis
+  emoji: Emoji
 }
 
 const Title = styled.h1`
-  color: #cc6f78;
-  display: inline-flex;
-  font-size: 2em;
+  color: var(--color-primary);
 
   &:after {
     content: ${(props: TitleProps) => `'${props.emoji}'`};
   }
 `
 
-const ToggleButton = styled.button`
-  display: inline-block;
-  align-self: center;
-`
+const Header: React.FC<HeaderProps> = ({ text, emojis }) => {
+  const [option1, option2] = emojis
+  const [emoji, setEmoji] = useState<Emoji>(option1)
 
-const Header = ({ text, emojis }: HeaderProps) => {
-  const [toggle, setToggle] = useState<boolean>(false)
+  const toggleEmoji = (): void => {
+    setEmoji(emoji === option1 ? option2 : option1)
+  }
 
   return (
     <>
@@ -40,10 +38,8 @@ const Header = ({ text, emojis }: HeaderProps) => {
           align-items: center;
         `}
       >
-        <Title emoji={toggle ? emojis[0] : emojis[1]}>{text}</Title>
-        <ToggleButton onClick={() => setToggle(!toggle)}>
-          Toggle Flavour Prop
-        </ToggleButton>
+        <Title emoji={emoji}>{text}</Title>
+        <button onClick={toggleEmoji}>Toggle Flavour Prop</button>
       </div>
     </>
   )

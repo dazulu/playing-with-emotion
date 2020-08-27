@@ -5,19 +5,34 @@ import { Global, css } from '@emotion/core'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 
-import 'styles/globals.css'
-
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
+        <title>Learning</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Global
         styles={css`
+          :root {
+            --color-primary: #cc6f78;
+          }
+
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+          html {
+            box-sizing: border-box;
+          }
+
+          *,
+          *:before,
+          *:after {
+            box-sizing: inherit;
+          }
+
           body {
-            height: 100%;
-            text-align: center;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
           }
         `}
       />
